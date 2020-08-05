@@ -8,7 +8,7 @@
         void StopEvent();
         bool CheckPassEventCondition();
         float GetDelayNextEvent();
-        void Skip();
+        bool Skip();
         void OnDestroy();
     }
 }

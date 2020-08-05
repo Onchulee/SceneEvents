@@ -5,6 +5,8 @@ namespace com.dgn.SceneEvent
     public abstract class SceneEvent : SceneSubEvent, ICustomSceneEventNext
     {
         /*
+         // From SceneSubEvent
+
         protected bool passEventCondition;
         [SerializeField]
         protected float delayNextEvent;
@@ -30,10 +32,10 @@ namespace com.dgn.SceneEvent
         public virtual void OnDestroy() { }
         */
         
-        public abstract void Pause();
-        public abstract void UnPause();
-
         public abstract SceneEvent NextEvent();
+
+        public virtual void Pause() { }
+        public virtual void UnPause() { }
 
         public virtual void InitScene(SceneEvent sceneEvent)
         {

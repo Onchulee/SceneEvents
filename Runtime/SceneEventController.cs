@@ -31,7 +31,6 @@ namespace com.dgn.SceneEvent
         public bool IsEventStart { get { return isEventStart; } }
         private bool pause;
         public bool IsPause { get { return pause; } }
-        private bool skip;
 
         protected override void Awake()
         {
@@ -39,7 +38,6 @@ namespace com.dgn.SceneEvent
             onEditMode = false;
 
             delayProc = 0;
-            skip = false;
             pause = false;
             isEventStart = false;
             onStartEvent = false;
@@ -54,7 +52,6 @@ namespace com.dgn.SceneEvent
         {
             if (currentEvent == null) return;
             if (pause) return;
-            //if (SKIP_BUTTON) skip = true;
 
             if (delayProc > 0)
             {
@@ -64,7 +61,6 @@ namespace com.dgn.SceneEvent
             if (onStartEvent)
             {
                 onStartEvent = false;
-                skip = false;
                 currentEvent.StartEvent();
             }
             else
@@ -79,12 +75,6 @@ namespace com.dgn.SceneEvent
                     onStartEvent = true;
                 }
             }
-
-            if (skip)
-            {
-                currentEvent.Skip();
-                skip = false;
-            }
         }
         
         public void StartEvent()
@@ -95,20 +85,29 @@ namespace com.dgn.SceneEvent
             pause = false;
         }
 
-        public void SkipEvent()
+
+        /// <summary>
+        /// Skip current event
+        /// </summary>
+        /// <returns>
+        /// true if current event is skippable.
+        /// false if it's not skippable or the event doesn't existed.
+        /// </returns>
+        public bool SkipEvent()
         {
-            skip = true;
+            if(currentEvent) return currentEvent.Skip();
+            return false;
         }
 
         public void PauseEvent()
         {
             pause = true;
-            currentEvent.Pause();
+            if (currentEvent) currentEvent.Pause();
         }
 
         public void UnPauseEvent()
         {
-            currentEvent.UnPause();
+            if (currentEvent) currentEvent.UnPause();
             pause = false;
         }
 

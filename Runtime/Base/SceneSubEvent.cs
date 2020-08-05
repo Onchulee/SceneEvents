@@ -18,7 +18,10 @@ namespace com.dgn.SceneEvent
         public abstract void StartEvent();
         public abstract void UpdateEvent();
         public abstract void StopEvent();
-        public abstract void Skip();
+
+        public virtual bool Skip() {
+            return false;
+        }
 
         public virtual bool CheckPassEventCondition()
         {
