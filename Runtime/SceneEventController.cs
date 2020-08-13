@@ -10,19 +10,17 @@ namespace com.dgn.SceneEvent
 
         [SerializeField]
         [ConditionalHide("onEditMode", false)]
-        [ModifiableProperty]
         private SceneEvent initialEvent;
         public bool IsInitialEventAvailable { get { return initialEvent != null; } }
 
         [SerializeField]
         [ReadOnly]
-        [ModifiableProperty]
         private SceneEvent currentEvent;
         public bool IsCurrentEventAvailable { get { return currentEvent != null; } }
 
         [SerializeField]
         [ReadOnly]
-        [ConditionalHide("onEditMode", true, ConditionalHideAttribute.Condition.False)]
+        [ConditionalHide("onEditMode", true, ConditionalHide.False)]
         [Rename("Delay next process")]
         private float delayProc;
         private bool onStartEvent;
