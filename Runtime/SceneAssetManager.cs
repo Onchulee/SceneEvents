@@ -37,7 +37,7 @@ namespace com.dgn.SceneEvent
             }
             else
             {
-                Debug.Log(asset.assetName + " has already existed.");
+                Debug.LogWarning(asset.assetName + " has already existed.");
             }
         }
 
@@ -60,7 +60,12 @@ namespace com.dgn.SceneEvent
                 if (SceneAssetManager.instance.assetDictionary.TryGetValue(name, out SceneAsset sceneAsset))
                 {
                     retGameObject = sceneAsset.gameObject;
-                    return retGameObject != null;
+                    bool found = retGameObject != null;
+                    if (!found)
+                    {
+                        Debug.LogWarning("Scene Asset [" + name + "] is not found!");
+                    }
+                    return found;
                 }
             }
             return false;
@@ -73,7 +78,9 @@ namespace com.dgn.SceneEvent
             {
                 SceneAsset sceneAsset = default;
                 bool found = SceneAssetManager.instance.assetDictionary.TryGetValue(name, out sceneAsset);
-                Debug.Log("TryGetValue[" + name + "]: " + found);
+                if (!found) {
+                    Debug.LogWarning("Component [" + typeof(T).Name + "] from Scene Asset [" + name + "] is not found!");
+                }
                 if (found && sceneAsset.gameObject != null)
                 {
                     asset = sceneAsset.gameObject.GetComponent<T>();
@@ -90,6 +97,10 @@ namespace com.dgn.SceneEvent
             {
                 SceneAsset sceneAsset = new SceneAsset();
                 bool found = SceneAssetManager.instance.assetDictionary.TryGetValue(name, out sceneAsset);
+                if (!found)
+                {
+                    Debug.LogWarning("Child component ["+ typeof(T).Name + "] from Scene Asset [" + name + "] is not found!");
+                }
                 if (found && sceneAsset.gameObject != null)
                 {
                     asset = sceneAsset.gameObject.GetComponentInChildren<T>();

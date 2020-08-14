@@ -12,6 +12,7 @@ namespace com.dgn.SceneEvent
         /// The instance.
         /// </summary>
         private static T instance;
+        
         #endregion
 
         #region Properties
@@ -27,6 +28,7 @@ namespace com.dgn.SceneEvent
                 return instance;
             }
         }
+        
 
         #endregion
 
