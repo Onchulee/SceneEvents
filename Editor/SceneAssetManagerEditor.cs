@@ -54,10 +54,8 @@ namespace com.dgn.SceneEvent.Editor
                     EditorGUI.BeginDisabledGroup(true);
                     for (int i = 0; i < sceneAssetList.Count; i++)
                     {
-#pragma warning disable CS0618 // Type or member is obsolete
                         EditorGUILayout.ObjectField(i + " : " + sceneAssetList[i].assetName,
                             sceneAssetList[i], typeof(SceneAsset));
-#pragma warning restore CS0618 // Type or member is obsolete
                     }
                     EditorGUI.BeginDisabledGroup(false);
 
