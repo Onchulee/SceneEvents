@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace com.dgn.SceneEvent
 {
-    internal static class ListUtilities
+    public static class ListUtilities
     {
 
         public static bool IsValidIndex(this IList list, int index)

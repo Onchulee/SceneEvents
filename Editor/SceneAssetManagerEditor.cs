@@ -3,10 +3,10 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace com.dgn.SceneEvent
+namespace com.dgn.SceneEvent.Editor
 {
     [CustomEditor(typeof(SceneAssetManager))]
-    public class SceneAssetManagerEditor : Editor
+    public class SceneAssetManagerEditor : UnityEditor.Editor
     {
         GUIStyle wrapLabelStyle;
         SceneAssetManager AssetManager { get { return target as SceneAssetManager; } }

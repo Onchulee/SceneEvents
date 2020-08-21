@@ -1,11 +1,11 @@
 {
-    "name": "com.dgn.scene-events",
+    "name": "com.dgn.SceneEvent",
     "references": [
-        "GUID:f6f65fd977843394f9f0168d17ed476b"
+        "GUID:2047f174577971d4081d3cf7217cf4f6"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
-    "allowUnsafeCode": true,
+    "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,

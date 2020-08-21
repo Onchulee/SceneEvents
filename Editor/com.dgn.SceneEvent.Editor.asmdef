@@ -1,0 +1,15 @@
+{
+    "name": "com.dgn.SceneEvent.Editor",
+    "references": [
+        "GUID:f2b2626d0a71ace41ad3b3f340f61835"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

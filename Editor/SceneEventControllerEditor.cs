@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEditorInternal;
 
-namespace com.dgn.SceneEvent
+namespace com.dgn.SceneEvent.Editor
 {
     [CustomEditor(typeof(SceneEventController))]
-    public class SceneEventControllerEditor : Editor
+    public class SceneEventControllerEditor : UnityEditor.Editor
     {
         private const string C_LIST_NAME = "sqe-";
 
