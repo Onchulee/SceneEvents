@@ -1,6 +1,6 @@
 {
     "name": "com.dgn.scene-events",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "displayName": "Scene Event",
     "description": "My scene event controller for Unity project.",
     "unity": "2019.4",
@@ -11,5 +11,12 @@
         "name": "Dragan O. Wip",
         "email": "onchulee.wip@hotmail.com",
         "url": "https://github.com/Onchulee/SceneEvent#readme"
-    }
+    },
+    "samples": [
+        {
+            "displayName": "Example Project",
+            "description": "Example project that shows how to use Scene Events",
+            "path": "Samples~/Sample"
+        }
+    ]
 }
