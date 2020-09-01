@@ -4,6 +4,9 @@
     "displayName": "Scene Event",
     "description": "My scene event controller for Unity project.",
     "unity": "2019.4",
+    "dependencies": {
+        "com.dgn.unity-attributes": "1.0.6"
+    },
     "keywords": [
         "Scene Event"
     ],
