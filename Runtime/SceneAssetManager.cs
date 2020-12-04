@@ -109,5 +109,25 @@ namespace com.dgn.SceneEvent
             }
             return false;
         }
+
+        public static bool GetAssetComponentsInChildren<T>(string name, out T[] assets)
+        {
+            assets = default;
+            if (SceneAssetManager.instance != null && SceneAssetManager.instance.assetDictionary != null)
+            {
+                SceneAsset sceneAsset = new SceneAsset();
+                bool found = SceneAssetManager.instance.assetDictionary.TryGetValue(name, out sceneAsset);
+                if (!found)
+                {
+                    Debug.LogWarning("Children component [" + typeof(T).Name + "] from Scene Asset [" + name + "] is not found!");
+                }
+                if (found && sceneAsset.gameObject != null)
+                {
+                    assets = sceneAsset.gameObject.GetComponentsInChildren<T>();
+                    return assets != null;
+                }
+            }
+            return false;
+        }
     }
 }
