@@ -16,6 +16,7 @@ namespace com.dgn.SceneEvent
         public List<SceneEvent> SequenceEvents
         {
             get {
+                if (sequenceEvents == null) sequenceEvents = new List<SceneEvent>();
                 return sequenceEvents;
             }
         }
