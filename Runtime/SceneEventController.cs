@@ -21,9 +21,14 @@ namespace com.dgn.SceneEvent
             }
         }
         private int seqID = 0;
-        [Tooltip("Whether controller automatically continues next scene event in SequenceEvents")]
+
+        [Tooltip("Whether controller automatically start event when ready")]
         [ConditionalHide("onEditMode", false)]
         public bool autoRun = false;
+
+        [Tooltip("Whether controller automatically continues next scene event in SequenceEvents")]
+        [ConditionalHide("onEditMode", false)]
+        public bool autoRunNext = false;
 
         [SerializeField]
         [ReadOnly]
@@ -50,14 +55,19 @@ namespace com.dgn.SceneEvent
         private bool pause;
         public bool IsPause { get { return pause; } }
 
+        private bool ready;
+        public bool IsReady { get { return ready; } }
+
         protected override void Awake()
         {
             base.Awake();
+            initialEvent = null;
             onEditMode = false;
             delayProc = 0;
             pause = false;
             isEventStart = false;
             onStartEvent = false;
+            ready = false;
         }
 
         private void Start()
@@ -69,6 +79,8 @@ namespace com.dgn.SceneEvent
             if (sequenceEvents.Count > 0) {
                 seqID = 0;
                 initialEvent = sequenceEvents[0];
+                ready = true;
+                if (autoRun) StartEvent();
             }
         }
 
@@ -106,19 +118,33 @@ namespace com.dgn.SceneEvent
                         seqID = seqID + 1;
                         if (IsNextSequenceEventAvailable) {
                             initialEvent = sequenceEvents[seqID];
-                            if (autoRun) StartEvent();
+                            if (autoRunNext) StartEvent();
                             else delayProc = 0;
                         }
                     }
                 }
             }
         }
-        
-        public void StartEvent()
+
+        /// <summary>
+        /// Start event
+        /// </summary>
+        /// <returns>
+        /// true if event can be started
+        /// false if event is not ready and can't be started
+        /// </returns>
+        public bool StartEvent()
         {
-            currentEvent = initialEvent;
-            onStartEvent = true;
-            isEventStart = true;
+            if (initialEvent == null) {
+                Debug.LogWarning("Scene Event Controller: No Event available to be started.");
+            }
+            if (ready) {
+                currentEvent = initialEvent;
+                initialEvent = null;
+                onStartEvent = true;
+                isEventStart = true;
+            }
+            return ready;
         }
 
 
