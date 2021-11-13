@@ -19,6 +19,9 @@ namespace com.dgn.SceneEvent
         public abstract void UpdateEvent();
         public abstract void StopEvent();
 
+        public virtual bool IsSkippable() {
+            return false;
+        }
         public virtual bool Skip() {
             return false;
         }

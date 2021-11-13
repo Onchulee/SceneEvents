@@ -98,12 +98,12 @@ namespace com.dgn.SceneEvent.Editor
 
         private void OnDisable()
         {
-            if (AssetManager) AssetManager.WantRepaint += RedrawGUI;
+            if (AssetManager) AssetManager.WantRepaint -= RedrawGUI;
         }
 
         private void OnDestroy()
         {
-            if (AssetManager) AssetManager.WantRepaint += RedrawGUI;
+            if (AssetManager) AssetManager.WantRepaint -= RedrawGUI;
         }
     }
 
