@@ -55,7 +55,7 @@ namespace com.dgn.SceneEvent.Editor
                     for (int i = 0; i < sceneAssetList.Count; i++)
                     {
                         EditorGUILayout.ObjectField(i + " : " + sceneAssetList[i].assetName,
-                            sceneAssetList[i], typeof(SceneAsset));
+                            sceneAssetList[i], typeof(SceneAsset), true);
                     }
                     EditorGUI.BeginDisabledGroup(false);
 
